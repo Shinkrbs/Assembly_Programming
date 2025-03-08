@@ -3,7 +3,7 @@
  
 .data 
    ; Goal Count Number of steps to reach collatz sequence.
-   input dw 10
+   input dw 10000
    result dw ?
     
 .code 
