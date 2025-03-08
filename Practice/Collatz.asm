@@ -17,13 +17,13 @@
    mov AX, input
    
    loop:
-        cmp AX, 1
-        jz done
+        cmp AX, 1   ; Base Case
+        jz done     ; End the loop
         
-        test AX, 1
+        test AX, 1  ; Check if current number is odd or even
         jz even
         
-        jmp odd
+        jnz odd
 
    odd: 
         mov DX, 0
