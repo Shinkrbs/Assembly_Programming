@@ -13,7 +13,7 @@
         mov DS,AX 
         mov ES,AX
         
-        mov BX , 0                               ; BX = starting address                              
+        lea BX , array                               ; BX = starting address                              
         call selection_sort 
         
         
@@ -23,10 +23,6 @@
    main endp
    
    get_min proc near
-        
-        push BX
-        push DI
-        push SI
         
         mov SI, BX
         mov DI, CX 
@@ -50,10 +46,6 @@
         done_min:
             
             mov CX, SI 
-            
-            pop SI
-            pop DI
-            pop BX
             ret
     get_min endp
             
@@ -73,14 +65,11 @@
                 je skip_swap
                 
                 mov SI, BX
-                mov AL, array[SI] 
-                mov AH, AL                      ; treat AH as temp
                 mov DI, CX
-                mov AL, array[DI] 
-                mov array[SI], AL               ; Swap the values   
-                mov AL, AH
-                mov array[DI], AL  
-                
+                mov AL, array[SI]
+                xchg AL, array[DI]
+                mov array[SI], AL
+
            skip_swap:
                 
                 inc BX
